@@ -26,7 +26,10 @@ function downloadImageByURL(url, filePath) {
 }
 
 getRepoContributors(owner, repo, function(err, result) {
-  console.log("Errors:", err);
+  if(owner === undefined || repo === undefined) {
+    console.log("Errors: " + err + " please specify owner/repo");
+  }
+  
   //console.log("Result:", result);
   result.forEach(function(result) {
     var avatarURL = result.avatar_url;
